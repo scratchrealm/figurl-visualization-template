@@ -33,6 +33,9 @@ from figurl_visualization_template import VisualizationExample
 X = VisualizationExample(text="some-sample-text")
 url = X.url(label='Visualization template')
 print(url)
+
+# Output:
+# https://figurl.org/f?v=gs://figurl/visualization-template-1&d=ipfs://bafkreigjjuhffdlw6jpacv4qa2uf5fjlionmpcfx5aagxuijfj4obgjizu&label=Visualization%20template
 ```
 
 ## For developers
