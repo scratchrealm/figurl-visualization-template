@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getFigureData, useWindowDimensions } from './figurl';
-import MainComponent, { isVisualizationTemplateData, VisualizationTemplateData } from './VisualizationTemplateComponent/MainComponent';
+import MainComponent, { isVisualizationTemplateData, VisualizationTemplateData } from './MainComponent/MainComponent';
 
 
 function App() {
