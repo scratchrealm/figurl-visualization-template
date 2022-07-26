@@ -165,6 +165,56 @@ export const isSubscribeToFeedResponse = (x: any): x is SubscribeToFeedResponse 
     })
 }
 
+// storeFile
+
+export type StoreFileRequest = {
+    type: 'storeFile'
+    fileData: string
+}
+
+export const isStoreFileRequest = (x: any): x is StoreFileRequest => {
+    return validateObject(x, {
+        type: isEqualTo('storeFile'),
+        fileData: isString
+    })
+}
+
+export type StoreFileResponse = {
+    type: 'storeFile'
+    uri?: string
+}
+
+export const isStoreFileResponse = (x: any): x is StoreFileResponse => {
+    return validateObject(x, {
+        type: isEqualTo('storeFile'),
+        uri: optional(isString)
+    })
+}
+
+// setUrlState
+
+export type SetUrlStateRequest = {
+    type: 'setUrlState'
+    state: {[key: string]: any}
+}
+
+export const isSetUrlStateRequest = (x: any): x is SetUrlStateRequest => {
+    return validateObject(x, {
+        type: isEqualTo('setUrlState'),
+        state: isJSONObject
+    })
+}
+
+export type SetUrlStateResponse = {
+    type: 'setUrlState'
+}
+
+export const isSetUrlStateResponse = (x: any): x is SetUrlStateResponse => {
+    return validateObject(x, {
+        type: isEqualTo('setUrlState')
+    })
+}
+
 //////////////////////////////////////////////////////////////
 
 export type FigurlRequest =
@@ -173,7 +223,9 @@ export type FigurlRequest =
     GetFileDataUrlRequest |
     GetMutableRequest |
     InitiateTaskRequest |
-    SubscribeToFeedRequest
+    SubscribeToFeedRequest |
+    StoreFileRequest |
+    SetUrlStateRequest
 
 export const isFigurlRequest = (x: any): x is FigurlRequest => {
     return isOneOf([
@@ -182,7 +234,9 @@ export const isFigurlRequest = (x: any): x is FigurlRequest => {
         isGetFileDataUrlRequest,
         isGetMutableRequest,
         isInitiateTaskRequest,
-        isSubscribeToFeedRequest
+        isSubscribeToFeedRequest,
+        isStoreFileRequest,
+        isSetUrlStateRequest
     ])(x)
 }
 
@@ -192,7 +246,9 @@ export type FigurlResponse =
     GetFileDataUrlResponse |
     GetMutableResponse |
     InitiateTaskResponse |
-    SubscribeToFeedResponse
+    SubscribeToFeedResponse |
+    StoreFileResponse |
+    SetUrlStateResponse
 
 export const isFigurlResponse = (x: any): x is FigurlResponse => {
     return isOneOf([
@@ -201,6 +257,8 @@ export const isFigurlResponse = (x: any): x is FigurlResponse => {
         isGetFileDataUrlResponse,
         isGetMutableResponse,
         isInitiateTaskResponse,
-        isSubscribeToFeedResponse
+        isSubscribeToFeedResponse,
+        isStoreFileResponse,
+        isSetUrlStateResponse
     ])(x)
 }
